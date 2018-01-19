@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter, Link, Route } from 'react-router-dom'
+import {BrowserRouter, Link, Route, NavLink } from 'react-router-dom'
 import './App.css';
 
 class TopicArticles extends Component {
@@ -34,8 +34,15 @@ class TopicArticles extends Component {
         return (
           <div>
                 {ArticlesArray.map((article)=>{
-                  return <p className="box">{article.body}</p>
-                })}
+                  return (
+                  <div>
+                    <h1> <b>{article.title} </b></h1>
+                    <p className="box">  <NavLink to= {`articles/${article._id}`}> {article.body}</NavLink></p>
+                    <p> CreatedBy: <NavLink to= {`/users/${article.created_by}`}> {article.created_by} </NavLink></p>
+                    <p> Votes: {article.votes} </p>
+                    <p> Comments: <NavLink to= {`/${article._id}/comments`}> {article.comments} </NavLink></p>
+                  </div>)
+                })}  
             </div>
         );
       }

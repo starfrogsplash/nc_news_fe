@@ -3,7 +3,11 @@ import {BrowserRouter, Link, Route } from 'react-router-dom'
 import './App.css';
 import TopicArticles from './TopicArticles'
 import Articles from './Articles'
+import Article from './Article'
+import ArticleComments from './comments'
 import Nav from './Nav';
+import User from './user';
+
 
 class HomePage extends Component {
   state = {
@@ -42,7 +46,11 @@ class HomePage extends Component {
         })}
         <div>
            <Route exact path ='/:topic_name/articles' component = {TopicArticles} />
+           <Route exact path ='/articles/:id' component = {Article} />
            <Route exact path ='/articles' component = {Articles} />
+           <Route exact path ='/users/:username' component = {User} />
+           <Route exact path = '/:article_id/comments' component= {ArticleComments} />
+           
         </div>  
       </div>
       </BrowserRouter>
