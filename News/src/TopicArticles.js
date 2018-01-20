@@ -27,6 +27,29 @@ class TopicArticles extends Component {
             .catch(console.log)
         }
 
+    //api/topics/:topic_id/articles
+  changeVotes = (article_id, vote) => {
+    fetch(`http://northcoders-news-api.herokuapp.com/api/articles/${article_id}?vote=${vote}`, { method: 'PUT' })
+      .then(resbuffer => resbuffer.json())
+      .then((res) => {
+        console.log(res)
+        const newArticleArray = this.state.articles.map((article) => {
+          if (article._id === res._id) {
+            return res
+          } else {
+            return article
+          }
+        })
+        this.setState({
+          articles: newArticleArray
+        })
+      })
+      .catch(console.log)
+  }
+   
+
+
+
     render() {
         const ArticlesArray = this.state.articles
         const topic = this.props.match.params.topic_name
@@ -39,7 +62,9 @@ class TopicArticles extends Component {
                     <h1> <b>{article.title} </b></h1>
                     <p className="box">  <NavLink to= {`articles/${article._id}`}> {article.body}</NavLink></p>
                     <p> CreatedBy: <NavLink to= {`/users/${article.created_by}`}> {article.created_by} </NavLink></p>
+                    <button onClick={() => this.changeVotes(article._id, 'up')}> Up </button>
                     <p> Votes: {article.votes} </p>
+                    <button onClick={() => this.changeVotes(article._id, 'down')}> Down </button>
                     <p> Comments: <NavLink to= {`/${article._id}/comments`}> {article.comments} </NavLink></p>
                   </div>)
                 })}  
