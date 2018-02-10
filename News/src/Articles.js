@@ -25,6 +25,7 @@ class Articles extends Component {
       .catch(console.log)
   }
 
+  
 
   changeVotes = (article_id, vote) => {
     fetch(`http://northcoders-news-api.herokuapp.com/api/articles/${article_id}?vote=${vote}`, { method: 'PUT' })

@@ -49,8 +49,8 @@ class HomePage extends Component {
            <Route exact path ='/articles/:id' component = {Article} />
            <Route exact path ='/articles' component = {Articles} />
            <Route exact path ='/users/:username' component = {User} />
-           <Route exact path = '/:article_id/comments' component= {ArticleComments} />
-           
+          {/* <Route exact path = '/:article_id/comments' component= {ArticleComments} /> */}
+           <Route exact path='/:article_id/comments' render={(params) => <ArticleComments {...params} />} />
         </div>  
       </div>
       </BrowserRouter>
