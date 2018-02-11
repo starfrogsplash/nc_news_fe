@@ -66,7 +66,8 @@ class TopicArticles extends Component {
                     <button onClick={() => this.changeVotes(article._id, 'up')}> Up </button>
                     <p> Votes: {article.votes} </p>
                     <button onClick={() => this.changeVotes(article._id, 'down')}> Down </button>
-                    <p> Comments: <NavLink to= {`/${article._id}/comments`}> {article.comments} </NavLink></p>
+                    {/* <p> Comments: <NavLink to= {`/${article._id}/comments`}> {article.comments} </NavLink></p> */}
+                    <p> Comments: {article.comments} </p>
                   </div>)
                 })}  
             </div>
