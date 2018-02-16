@@ -33,5 +33,9 @@
 }
 
 .navbar{
-  background-color: tomato;
+  background-color: rgb(213, 213, 213);
+}
+
+.navbar-brand{
+  background-color: orange;
 }

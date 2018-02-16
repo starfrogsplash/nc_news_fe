@@ -33,6 +33,7 @@ class ArticleComments extends Component {
             })
             .then(function (body) {
                 console.log(body);
+                document.getElementById('Post-Comment').value = ''
             });
     }
 
@@ -40,7 +41,12 @@ class ArticleComments extends Component {
         console.log(author)
         if ( author === "northcoder") {
             fetch(`http://northcoders-news-api.herokuapp.com/api/comments/${comment_id}`, { method: 'DELETE' })
-                .then(resbuffer => resbuffer.json())
+                // .then(res => res.json())
+                .then(res => {
+                    if (res.ok){
+                        this.fetchCommentsByArticleID(this.props.match.params.article_id)
+                    }
+                })
                 .catch(console.log)
         } else {
             alert('You cannot delete this comment!!')
@@ -48,13 +54,13 @@ class ArticleComments extends Component {
     }
 
 
-
     fetchCommentsByArticleID = (article) => {
         fetch(`http://northcoders-news-api.herokuapp.com/api/articles/${article}/comments`)
             .then(resBuffer => resBuffer.json())
             .then((res) => {
+                const comm = res.comments.reverse()
                 this.setState({
-                    comments: res.comments
+                    comments: comm
                 })
             })
             .catch(console.log)
@@ -99,9 +105,21 @@ class ArticleComments extends Component {
             <div>
                 <p className="box" >{article.body}</p>
                 <form >
-                    Add a comment:<br />
-                    <input type="text" className="Post-Comment" id='Post-Comment' />
-                    <button onClick={this.postComment} type="submit" form="nameform" value="Submit">Submit</button>
+                    <section className='columns'>
+                        <section className='column is-one-third'></section>
+                        <section className='column'>
+                            <div class="field">
+                                <label class="label">Add a comment</label>
+                                    <div class="control">
+                                        <textarea id='Post-Comment' class="textarea Post-Comment" placeholder="Textarea"></textarea>
+                                    </div>
+                            </div>
+                            </section>
+                        <section className='column'></section>
+                    </section>
+
+                    <button id='commentInput' onClick={() => {this.postComment(); setTimeout(()=> this.fetchCommentsByArticleID(this.props.match.params.article_id), 2000
+)}} type="submit" form="nameform" value="Submit">Submit</button>
                 </form>
                 {commentsArray.map((Articlecomments) => {
                     return (
@@ -110,7 +128,7 @@ class ArticleComments extends Component {
                             <button onClick={() => this.changeVotes(Articlecomments._id, 'up')}> Up </button>
                             <p> Votes: {article.votes} </p>
                             <button onClick={() => this.changeVotes(Articlecomments._id, 'down')}> Down </button>
-                            <button onClick={this.deleteComment.bind(null, Articlecomments._id, Articlecomments.created_by)}>Delete</button>
+                            <p><button onClick={this.deleteComment.bind(null, Articlecomments._id, Articlecomments.created_by)}>Delete</button></p>
                         </div>)
                 })}
             </div>
