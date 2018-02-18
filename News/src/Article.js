@@ -8,28 +8,48 @@ class Article extends Component {
         body: "",
         created_by: "",
         belongs_to: "",
+        comments: 0,
         votes: 0
     }
 
     componentDidMount(event) {
         this.fetchArticle(this.props.match.params.id)
+        this.fetchComments(this.props.match.params.id)
     }
 
+
+    //https://be-nc-news.herokuapp.com
+
     fetchArticle(id) {
-       return fetch(`http://northcoders-news-api.herokuapp.com/api/articles/${id}`)
+       return fetch(`https://be-nc-news.herokuapp.com/api/articles/${id}`)
             .then(resbuffer => resbuffer.json())
             .then((res) => {
+                console.log('*********!!!!!!')
                 console.log(res)
                 this.setState({
-                    title: res.title,
-                    body: res.body,
-                    created_by: res.created_by,
-                    belongs_to: res.belongs_to,
-                    votes: res.votes
+                    title: res.article.title,
+                    body: res.article.body,
+                    created_by: res.article.created_by,
+                    belongs_to: res.article.belongs_to,
+                    votes: res.article.votes
                 })
             })
             .catch(console.log)
     }
+
+    fetchComments(id) {
+        return fetch(`https://be-nc-news.herokuapp.com/api/articles/${id}/comments`)
+             .then(resbuffer => resbuffer.json())
+             .then((res) => {
+                //  console.log('***', res.comments)
+                 this.setState({
+                    comments: res.comments
+                 })
+             })
+             .catch(console.log)
+     }
+
+    
 
     render(){
         return (
@@ -37,8 +57,9 @@ class Article extends Component {
                 <p><b>{this.state.title} </b></p>
                 <p>{this.state.body} </p>
                 <p>Created by: <NavLink to={`/users/${this.state.created_by}`}>{this.state.created_by} </NavLink></p>
-                <p>Topic: <NavLink to={`/topics/${this.state.belongs_to}`}> {this.state.belongs_to}</NavLink></p>
+                <p>Topic: <NavLink to={`/${this.state.belongs_to}/articles`}> {this.state.belongs_to}</NavLink></p>
                 <p>Votes: {this.state.votes} </p>
+             <p> comments: <NavLink to={`/${this.props.match.params.id}/comments`} >  {this.state.comments.length} </NavLink> </p> 
             </div>
         )
     }

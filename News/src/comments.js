@@ -21,7 +21,7 @@ class ArticleComments extends Component {
     }
 
     postComment = () => {
-        fetch(`http://northcoders-news-api.herokuapp.com/api/articles/${this.props.match.params.article_id}/comments`, {
+        fetch(`https://be-nc-news.herokuapp.com/api/articles/${this.props.match.params.article_id}/comments`, {
             method: 'POST',
             body: JSON.stringify({
                 comment: document.getElementById("Post-Comment").value
@@ -40,7 +40,7 @@ class ArticleComments extends Component {
     deleteComment = (comment_id, author) => {
         console.log(author)
         if ( author === "northcoder") {
-            fetch(`http://northcoders-news-api.herokuapp.com/api/comments/${comment_id}`, { method: 'DELETE' })
+            fetch(`https://be-nc-news.herokuapp.com/api/comments/${comment_id}`, { method: 'DELETE' })
                 // .then(res => res.json())
                 .then(res => {
                     if (res.ok){
@@ -55,7 +55,7 @@ class ArticleComments extends Component {
 
 
     fetchCommentsByArticleID = (article) => {
-        fetch(`http://northcoders-news-api.herokuapp.com/api/articles/${article}/comments`)
+        fetch(`https://be-nc-news.herokuapp.com/api/articles/${article}/comments`)
             .then(resBuffer => resBuffer.json())
             .then((res) => {
                 const comm = res.comments.reverse()
@@ -67,12 +67,13 @@ class ArticleComments extends Component {
     }
 
     fetchArticleByArticleID = (ID) => {
-        fetch(`http://northcoders-news-api.herokuapp.com/api/articles/${ID}`)
+        fetch(`https://be-nc-news.herokuapp.com/api/articles/${ID}`)
             .then(resBuffer => resBuffer.json())
             .then((res) => {
-                console.log(res)
+                console.log('%%%%%%%%%%%%%')
+                console.log(res.article)
                 this.setState({
-                    article: res
+                    article: res.article
                 })
             })
             .catch(console.log('error'))
@@ -80,9 +81,12 @@ class ArticleComments extends Component {
 
 
     changeVotes = (comment_id, vote) => {
-        fetch(`http://northcoders-news-api.herokuapp.com/api/comments/${comment_id}?vote=${vote}`, { method: 'PUT' })
+        fetch(`https://be-nc-news.herokuapp.com/api/comments/${comment_id}?vote=${vote}`, { method: 'PUT' })
             .then(resbuffer => resbuffer.json())
             .then((res) => {
+                console.log (res)
+                console.log (res._id)
+                //console.log (comment._id)
                 const newCommentsArray = this.state.comments.map((comment) => {
                     if (comment._id === res._id) {
                         return res
@@ -103,7 +107,7 @@ class ArticleComments extends Component {
         const article = this.state.article
         return (
             <div>
-                <p className="box" >{article.body}</p>
+                <p className="box" > {article.body}</p>
                 <form >
                     <section className='columns'>
                         <section className='column is-one-third'></section>
@@ -126,7 +130,7 @@ class ArticleComments extends Component {
                         <div>
                             <p className="comments-box" >{Articlecomments.body}</p>
                             <button onClick={() => this.changeVotes(Articlecomments._id, 'up')}> Up </button>
-                            <p> Votes: {article.votes} </p>
+                            <p> Votes: {Articlecomments.votes} </p>
                             <button onClick={() => this.changeVotes(Articlecomments._id, 'down')}> Down </button>
                             <p><button onClick={this.deleteComment.bind(null, Articlecomments._id, Articlecomments.created_by)}>Delete</button></p>
                         </div>)

@@ -14,8 +14,10 @@ class Articles extends Component {
     this.fetchAllArticles()
   }
 
+//https://be-nc-news.herokuapp.com
+
   fetchAllArticles = () => {
-    fetch('http://northcoders-news-api.herokuapp.com/api/articles')
+    fetch('https://be-nc-news.herokuapp.com/api/articles')
       .then(resbuffer => resbuffer.json())
       .then((res) => {
         this.setState({
@@ -28,12 +30,12 @@ class Articles extends Component {
   
 
   changeVotes = (article_id, vote) => {
-    fetch(`http://northcoders-news-api.herokuapp.com/api/articles/${article_id}?vote=${vote}`, { method: 'PUT' })
+    fetch(`https://be-nc-news.herokuapp.com/api/articles/${article_id}?vote=${vote}`, { method: 'PUT' })
       .then(resbuffer => resbuffer.json())
       .then((res) => {
         const newArticleArray = this.state.articles.map((article) => {
-          if (article._id === res._id) {
-            return res
+          if (article._id === res.article._id) {
+            return res.article
           } else {
             return article
           }

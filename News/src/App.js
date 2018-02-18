@@ -19,11 +19,12 @@ class HomePage extends Component {
     this.fetchAllTopics()
   }
 
+  //https://be-nc-news.herokuapp.com/api/topics
  // https://be-nc-news.herokuapp.com/api/topics
 // http://northcoders-news-api.herokuapp.com/api/topics
 
   fetchAllTopics = () => {
-    fetch('http://northcoders-news-api.herokuapp.com/api/topics')
+    fetch('https://be-nc-news.herokuapp.com/api/topics')
       .then(resbuffer => resbuffer.json())
       .then((res) => {
         console.log(res)
@@ -48,7 +49,7 @@ class HomePage extends Component {
           </header> */}
           <div>
             <Route exact path='/:topic_name/articles' component={TopicArticles} />
-            <Route exact path='/articles/:id' component={Article} />
+            <Route exact path='/:topic_name/articles/:id' component={Article} />
             <Route exact path='/articles' component={Articles} />
             <Route exact path='/' render={() => <Home topics={topicsArray}/>} />
             <Route exact path='/users/:username' component={User} />

@@ -15,8 +15,10 @@ class TopicArticles extends Component {
       this.fetchArticlesByTopic(nextProps.match.params.topic_name)
     }
 
+//https://be-nc-news.herokuapp.com
+
       fetchArticlesByTopic = (topic) => {
-          fetch(`http://northcoders-news-api.herokuapp.com/api/topics/${topic}/articles`)
+          fetch(`https://be-nc-news.herokuapp.com/api/topics/${topic}/articles`)
             .then(resbuffer => resbuffer.json())
             .then((res) => {
               console.log(res)
@@ -30,7 +32,7 @@ class TopicArticles extends Component {
  
    // api/articles/:article_id
   changeVotes = (article_id, vote) => {
-    fetch(`http://northcoders-news-api.herokuapp.com/api/articles/${article_id}?vote=${vote}`, { method: 'PUT' })
+    fetch(`https://be-nc-news.herokuapp.com/api/articles/${article_id}?vote=${vote}`, { method: 'PUT' })
       .then(resbuffer => resbuffer.json())
       .then((res) => {
         console.log(res)

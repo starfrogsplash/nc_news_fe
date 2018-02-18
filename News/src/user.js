@@ -13,14 +13,14 @@ class User extends Component {
       }
 
     fetchUser = username => {
-        return fetch(`http://northcoders-news-api.herokuapp.com/api/users/${username}`)
+        return fetch(`https://be-nc-news.herokuapp.com/api/users/${username}`)
           .then(resbuffer => resbuffer.json())
           .then((res) => {
-              console.log(res)
+              console.log('********' + res)
             this.setState({
-              username: res.users[0].username,
-                name: res.users[0].name,
-                avatar_url: res.users[0].avatar_url,
+              username: res.users.username,
+                name: res.users.name,
+                avatar_url: res.users.avatar_url,
             })
           })
           .catch(console.log)
