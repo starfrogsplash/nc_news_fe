@@ -55,7 +55,7 @@ class Article extends Component {
         return (
             <div>
                 <p><b>{this.state.title} </b></p>
-                <p>{this.state.body} </p>
+                <p className="box" >{this.state.body} </p>
                 <p>Created by: <NavLink to={`/users/${this.state.created_by}`}>{this.state.created_by} </NavLink></p>
                 <p>Topic: <NavLink to={`/${this.state.belongs_to}/articles`}> {this.state.belongs_to}</NavLink></p>
                 <p>Votes: {this.state.votes} </p>
