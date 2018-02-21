@@ -4,9 +4,12 @@
         "node": true,
         "mocha": true
     },
-    "parser": "babel-eslint",
-    "extends": "eslint:recommended",
+
     "parserOptions": {
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "jsx": true
+        },
         "sourceType": "module"
     },
     "rules": {

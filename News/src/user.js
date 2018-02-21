@@ -8,7 +8,7 @@ class User extends Component {
       avatar_url: ''
     }
 
-    componentDidMount(event) {
+    componentDidMount() {
       this.fetchUser(this.props.match.params.username);
     }
 
