@@ -20,11 +20,11 @@ class Nav extends React.Component {
           <div className="navbar-start">
 
             <div className="navbar-item has-dropdown is-hoverable">
-              <a className="navbar-link" href="/documentation/overview/start/">
+              <a className="navbar-link" href="/">
                                 Topics
               </a>
               <div className="navbar-dropdown is-boxed">
-                {this.props.topics.map(topic => <Link to={`/${topic.slug}/articles`} > <a  className="navbar-item has-text-weight-bold" href="/documentation/overview/start/">
+                {this.props.topics.map(topic => <Link to={`/${topic.slug}/articles`} > <a  className="navbar-item has-text-weight-bold" href="/">
                   {topic.title}
                 </a> </Link>)}
               </div>

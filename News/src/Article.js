@@ -51,7 +51,7 @@ class Article extends Component {
           <p>Created by: <NavLink to={`/users/${this.state.created_by}`}>{this.state.created_by} </NavLink></p>
           <p>Topic: <NavLink to={`/${this.state.belongs_to}/articles`}> {this.state.belongs_to}</NavLink></p>
           <p>Votes: {this.state.votes} </p>
-          <p> comments: <NavLink to={`/${this.props.match.params.id}/comments`} >  {this.state.comments.length} </NavLink> </p> 
+          <p> comments: <NavLink to={`${this.props.match.params.id}/comments`} >  {this.state.comments.length} </NavLink> </p> 
         </div>
       );
     }

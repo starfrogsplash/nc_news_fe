@@ -5,7 +5,8 @@ class ArticleComments extends Component {
     state = {
       comments: [],
       newComment: {},
-      article: {}
+      article: {},
+      value : ''
     }
 
     componentDidMount() {
@@ -16,6 +17,14 @@ class ArticleComments extends Component {
     componentWillReceiveProps(nextProps) {
       this.fetchCommentsByArticleID(nextProps.match.params.article_id);
       this.fetchArticleByArticleID(this.props.match.params.article_id);
+    }
+
+    // this.handleChange = this.handleChange.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
+
+
+    handleChange(event) {
+      this.setState({value: event.target.value});
     }
 
     postComment = () => {
@@ -96,6 +105,7 @@ class ArticleComments extends Component {
       const article = this.state.article;
       return (
         <div>
+       
           <p className="box" > {article.body}</p>
           <form >
             <section className='columns'>
@@ -104,7 +114,7 @@ class ArticleComments extends Component {
                 <div class="field">
                   <label class="label">Add a comment</label>
                   <div class="control">
-                    <textarea id='Post-Comment' class="textarea Post-Comment" placeholder="Textarea"></textarea>
+                    <textarea id='Post-Comment' class="textarea Post-Comment" placeholder="Enter Comment"></textarea>
                   </div>
                 </div>
               </section>
@@ -116,11 +126,14 @@ class ArticleComments extends Component {
           {commentsArray.map((Articlecomments) => {
             return (
               <div>
-                <p className="comments-box" >{Articlecomments.body}</p>
-                <button onClick={() => this.changeVotes(Articlecomments._id, 'up')}> Up </button>
-                <p> Votes: {Articlecomments.votes} </p>
-                <button onClick={() => this.changeVotes(Articlecomments._id, 'down')}> Down </button>
-                <p><button onClick={this.deleteComment.bind(null, Articlecomments._id, Articlecomments.created_by)}>Delete</button></p>
+                <p className="comments-box" >{Articlecomments.body}
+                  <p>
+                    <i class="fa fa-arrow-circle-up" onClick={() => this.changeVotes(Articlecomments._id, 'up')}> </i>
+                    <p> Votes: {Articlecomments.votes} </p>
+                    <i class="fa fa-arrow-circle-down" onClick={() => this.changeVotes(Articlecomments._id, 'down')}> </i>
+                    <p ><button onClick={this.deleteComment.bind(null, Articlecomments._id, Articlecomments.created_by)}>Delete</button></p>
+                  </p>
+                </p>
               </div>);
           })}
         </div>

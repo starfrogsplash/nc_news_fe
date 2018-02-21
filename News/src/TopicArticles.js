@@ -53,13 +53,14 @@ class TopicArticles extends Component {
         {ArticlesArray.map((article)=>{
           return (
             <div>
-              <h1> <b>{article.title} </b></h1>
-              <p className="box">  <NavLink to= {`articles/${article._id}`}> {article.body}</NavLink></p>
-              <p> CreatedBy: <NavLink to= {`/users/${article.created_by}`}> {article.created_by} </NavLink></p>
-              <button onClick={() => this.changeVotes(article._id, 'up')}> Up </button>
-              <p> Votes: {article.votes} </p>
-              <button onClick={() => this.changeVotes(article._id, 'down')}> Down </button>
-              <p> Comments: <NavLink to= {`/${article._id}/comments`}> {article.comments} </NavLink></p>
+              <h1> <NavLink to= {`articles/${article._id}`}> <b>{article.title} </b> </NavLink> </h1>
+                <p class= "Display_Articles" className="box">   {article.body} 
+                  <p> <b>CreatedBy: </b> <NavLink to= {`/users/${article.created_by}`}> {article.created_by} </NavLink></p>
+                  <i class="fa fa-arrow-circle-up" onClick={() => this.changeVotes(article._id, 'up')}> </i>
+                  <p> <b>Votes: </b> {article.votes} </p>
+                  <i class="fa fa-arrow-circle-down"  onClick={() => this.changeVotes(article._id, 'down')}> </i>
+                  <p> <b>Comments: </b> <NavLink to= {`${article._id}/comments`}> {article.comments} </NavLink></p>
+              </p>  
             </div>);
         })}  
       </div>

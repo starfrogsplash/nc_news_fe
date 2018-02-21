@@ -39,3 +39,30 @@
 .navbar-brand{
   background-color: orange;
 }
+
+.fa-arrow-circle-up{
+  margin-top: 25px;
+  font-size:30px;
+  color:green;
+}
+
+.fa-arrow-circle-down{
+  margin-bottom: 10px;
+  font-size:30px;
+  color:rgb(201, 25, 5);
+}
+
+.comments-box{
+  background-color:rgb(200, 212, 221);
+  border-block-end-color: black;
+  color:rgb(55, 55, 55);
+}
+
+.Display_Articles{
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+/* .delete-button{
+  font-size: 30px;
+} */
