@@ -56,11 +56,11 @@ class Articles extends Component {
           return (
             <div>
               <p className="box">
-                <h1>  <NavLink to={`/articles/${article._id}`} >{article.title} </NavLink> </h1>
+                <h1> <NavLink to={`/articles/${article._id}`} >{article.title} </NavLink> </h1>
                 <h2> <NavLink to={`/articles/${article._id}`} >{article.body} </NavLink> </h2>
+                <br/> 
                 <p> <NavLink to={`/users/${article.created_by}`} > {article.created_by} </NavLink> </p>
-                {/* <p>  <NavLink to={`/${article._id}/comments`} > comments: {article.comments} </NavLink> </p> */}
-                <p>  <NavLink to={`${article._id}/comments`} > comments: {article.comments} </NavLink> </p>
+                <p> <NavLink to={`${article._id}/comments`} > comments: {article.comments} </NavLink> </p>
                 <p>
                   <i class="fa fa-arrow-circle-up" onClick={() => this.changeVotes(article._id, 'up')}>  </i>
                   Votes: {article.votes}

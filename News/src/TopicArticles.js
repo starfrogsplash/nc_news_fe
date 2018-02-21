@@ -53,9 +53,12 @@ class TopicArticles extends Component {
         {ArticlesArray.map((article)=>{
           return (
             <div>
-              <h1> <NavLink to= {`articles/${article._id}`}> <b>{article.title} </b> </NavLink> </h1>
-                <p class= "Display_Articles" className="box">   {article.body} 
+              <h1 style={{'margin-top': '2em 0'}}class = "Title_Article"> <NavLink to= {`articles/${article._id}`}> <b>{article.title} </b> </NavLink> </h1>
+                <p class= "Display_Articles" className="box"> {article.body} 
+                  <div>
+                  <br/> 
                   <p> <b>CreatedBy: </b> <NavLink to= {`/users/${article.created_by}`}> {article.created_by} </NavLink></p>
+                  </div>
                   <i class="fa fa-arrow-circle-up" onClick={() => this.changeVotes(article._id, 'up')}> </i>
                   <p> <b>Votes: </b> {article.votes} </p>
                   <i class="fa fa-arrow-circle-down"  onClick={() => this.changeVotes(article._id, 'down')}> </i>

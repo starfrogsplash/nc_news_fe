@@ -105,7 +105,6 @@ class ArticleComments extends Component {
       const article = this.state.article;
       return (
         <div>
-       
           <p className="box" > {article.body}</p>
           <form >
             <section className='columns'>
@@ -125,8 +124,8 @@ class ArticleComments extends Component {
           </form>
           {commentsArray.map((Articlecomments) => {
             return (
-              <div>
-                <p className="comments-box" >{Articlecomments.body}
+              <div >
+                < p className="comments-box" >{Articlecomments.body}
                   <p>
                     <i class="fa fa-arrow-circle-up" onClick={() => this.changeVotes(Articlecomments._id, 'up')}> </i>
                     <p> Votes: {Articlecomments.votes} </p>
