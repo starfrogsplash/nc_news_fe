@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Link, Route, NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom';
 import './App.css';
 
 class Articles extends Component {
@@ -8,13 +8,11 @@ class Articles extends Component {
   }
 
   componentDidMount() {
-    this.fetchAllArticles()
+    this.fetchAllArticles();
   }
   componentWillReceiveProps() {
-    this.fetchAllArticles()
+    this.fetchAllArticles();
   }
-
-//https://be-nc-news.herokuapp.com
 
   fetchAllArticles = () => {
     fetch('https://be-nc-news.herokuapp.com/api/articles')
@@ -22,12 +20,10 @@ class Articles extends Component {
       .then((res) => {
         this.setState({
           articles: res.articles
-        })
+        });
       })
-      .catch(console.log)
+      .catch(console.log);
   }
-
-  
 
   changeVotes = (article_id, vote) => {
     fetch(`https://be-nc-news.herokuapp.com/api/articles/${article_id}?vote=${vote}`, { method: 'PUT' })
@@ -35,20 +31,20 @@ class Articles extends Component {
       .then((res) => {
         const newArticleArray = this.state.articles.map((article) => {
           if (article._id === res.article._id) {
-            return res.article
+            return res.article;
           } else {
-            return article
+            return article;
           }
-        })
+        });
         this.setState({
           articles: newArticleArray
-        })
+        });
       })
-      .catch(console.log)
+      .catch(console.log);
   }
 
   render() {
-    const ArticlesArray = this.state.articles
+    const ArticlesArray = this.state.articles;
     return (
       <div>
         <header className="Article-header">
@@ -70,7 +66,7 @@ class Articles extends Component {
                   <button onClick={() => this.changeVotes(article._id, 'down')}> Down </button>
                 </p>
               </p>
-            </div>)
+            </div>);
         })}
       </div>
     );
