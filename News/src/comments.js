@@ -122,8 +122,9 @@ class ArticleComments extends Component {
         </form>
         {commentsArray.map((Articlecomments) => {
           return (
-            <div >
-              < p className="comments-box" >{Articlecomments.body}
+            <div class="column" >
+            <section className='column is-three-fifths is-offset-one-fifth'>
+              <p class="box" className="comments-box" >{Articlecomments.body}
                 <p>
                   <i class="fa fa-arrow-circle-up" onClick={() => this.changeVotes(Articlecomments._id, 'up')}> </i>
                   <p> Votes: {Articlecomments.votes} </p>
@@ -131,7 +132,8 @@ class ArticleComments extends Component {
                   <p> Created_by:<NavLink to={`/users/${Articlecomments.created_by}`} > {Articlecomments.created_by} </NavLink></p>
                   <p ><button onClick={this.deleteComment.bind(null, Articlecomments._id, Articlecomments.created_by)}>Delete</button></p>
                 </p>
-              </p>
+              </p>   
+              </section>   
             </div>);
         })}
       </div>

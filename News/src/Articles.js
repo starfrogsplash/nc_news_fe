@@ -55,6 +55,7 @@ class Articles extends Component {
           console.log(article);
           return (
             <div>
+              <section class="column is-11 is-offset-1">
               <p className="box">
                 <h1> <NavLink to={`/articles/${article._id}`} >{article.title} </NavLink> </h1>
                 <h2> <NavLink to={`/articles/${article._id}`} >{article.body} </NavLink> </h2>
@@ -67,6 +68,7 @@ class Articles extends Component {
                   <button onClick={() => this.changeVotes(article._id, 'down')}> Down </button>
                 </p>
               </p>
+              </section>
             </div>);
         })}
       </div>

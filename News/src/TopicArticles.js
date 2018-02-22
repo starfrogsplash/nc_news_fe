@@ -52,7 +52,7 @@ class TopicArticles extends Component {
       <div>
         {ArticlesArray.map((article)=>{
           return (
-            <div>
+            <div class="column is-narrow" >
               <h1 style={{'margin-top': '2em 0'}}class = "Title_Article"> <NavLink to= {`articles/${article._id}`}> <b>{article.title} </b> </NavLink> </h1>
                 <p class= "Display_Articles" className="box"> {article.body} 
                   <div>
