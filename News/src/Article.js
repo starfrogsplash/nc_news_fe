@@ -45,14 +45,21 @@ class Article extends Component {
 
     render(){
       return (
-        <div>
-          <p><b>{this.state.title} </b></p>
-          <p className="box" >{this.state.body} </p>
-          <p>Created by: <NavLink to={`/users/${this.state.created_by}`}>{this.state.created_by} </NavLink></p>
-          <p>Topic: <NavLink to={`/${this.state.belongs_to}/articles`}> {this.state.belongs_to}</NavLink></p>
-          <p>Votes: {this.state.votes} </p>
-          <p> comments: <NavLink to={`${this.props.match.params.id}/comments`} >  {this.state.comments.length} </NavLink> </p> 
-        </div>
+        <article class="message">
+          <div class="message-header">
+          <section class="column is-half is-offset-one-quarter" >
+          <p> <b>{this.state.title} </b> </p>
+          </section>
+          </div>
+          <div class="message-body">
+            <p>{this.state.body}</p>
+            <br/>
+            <p>Created by: <NavLink to={`/users/${this.state.created_by}`}>{this.state.created_by} </NavLink></p>
+            <p>Topic: <NavLink to={`/${this.state.belongs_to}/articles`}> {this.state.belongs_to}</NavLink></p>
+            <p>Votes: {this.state.votes} </p>
+            <p> comments: <NavLink to={`${this.props.match.params.id}/comments`} >  {this.state.comments.length} </NavLink> </p> 
+          </div>
+        </article>
       );
     }
 }

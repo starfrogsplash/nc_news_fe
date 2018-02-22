@@ -63,9 +63,9 @@ class Articles extends Component {
                 <p> <NavLink to={`/users/${article.created_by}`} > {article.created_by} </NavLink> </p>
                 <p> <NavLink to={`${article._id}/comments`} > comments: {article.comments} </NavLink> </p>
                 <p>
-                  <i class="fa fa-arrow-circle-up" onClick={() => this.changeVotes(article._id, 'up')}>  </i>
-                  Votes: {article.votes}
-                  <button onClick={() => this.changeVotes(article._id, 'down')}> Down </button>
+                <i class="fa fa-arrow-circle-up" onClick={() => this.changeVotes(article._id, 'up')}>  </i>
+                Votes: {article.votes}
+                <button onClick={() => this.changeVotes(article._id, 'down')}> Down </button>
                 </p>
               </p>
               </section>

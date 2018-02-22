@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+// import { Message } from 'bulma'
+// import 'bulma/css/bulma.css'
 import './App.css';
+
+
 
 class ArticleComments extends Component {
   state = {
@@ -122,19 +126,18 @@ class ArticleComments extends Component {
         </form>
         {commentsArray.map((Articlecomments) => {
           return (
-            <div > 
-                <section className='column is-three-fifths is-offset-one-fifth'>
-                <p class="box" className="comments-box" >{Articlecomments.body}
-                  <p>
-                    <i class="fa fa-arrow-circle-up" onClick={() => this.changeVotes(Articlecomments._id, 'up')}> </i>
-                    <p> Votes: {Articlecomments.votes} </p>
-                    <i class="fa fa-arrow-circle-down" onClick={() => this.changeVotes(Articlecomments._id, 'down')}> </i>
-                    <p> Created_by:<NavLink to={`/users/${Articlecomments.created_by}`} > {Articlecomments.created_by} </NavLink></p>
-                    <p ><button onClick={this.deleteComment.bind(null, Articlecomments._id, Articlecomments.created_by)}>Delete</button></p>
-                  </p>
-                </p>   
-              </section>   
-            </div>);
+            <section className='column is-three-fifths is-offset-one-fifth'>
+              <article class="message is-info">
+               <div class="message-body">
+                      {Articlecomments.body}
+                      <p><i class="fa fa-arrow-circle-up" onClick={() => this.changeVotes(Articlecomments._id, 'up')}> </i> </p>
+                      <p> Votes: {Articlecomments.votes} </p>
+                      <i class="fa fa-arrow-circle-down" onClick={() => this.changeVotes(Articlecomments._id, 'down')}> </i>
+                      <p> Created_by:<NavLink to={`/users/${Articlecomments.created_by}`} > {Articlecomments.created_by} </NavLink></p>
+                      <p> <button onClick={this.deleteComment.bind(null, Articlecomments._id, Articlecomments.created_by)}>Delete</button></p>
+                </div> 
+              </article>
+            </section> );
         })}
       </div>
     );

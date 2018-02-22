@@ -72,3 +72,12 @@
   margin-top: 25px;
   margin-bottom: 10px;
 }
+
+.message-header>p {
+  text-align:center
+}
+
+
+.message-header {
+  text-align:center
+}
