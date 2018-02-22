@@ -127,7 +127,7 @@ class ArticleComments extends Component {
         {commentsArray.map((Articlecomments) => {
           return (
             <section className='column is-three-fifths is-offset-one-fifth'>
-              <article class="message is-info">
+              <article class="message is-dark">
                <div class="message-body">
                       {Articlecomments.body}
                       <p><i class="fa fa-arrow-circle-up" onClick={() => this.changeVotes(Articlecomments._id, 'up')}> </i> </p>
