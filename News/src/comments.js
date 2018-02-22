@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import './App.css';
 
 class ArticleComments extends Component {
@@ -37,7 +38,6 @@ class ArticleComments extends Component {
       }),
       headers: { 'Content-Type': 'application/json' }
     })
-      .then(response => response.json())
       .then( body => {
         this.setState({value: ''})
         this.fetchCommentsByArticleID(this.props.match.params.article_id);
@@ -128,6 +128,7 @@ class ArticleComments extends Component {
                   <i class="fa fa-arrow-circle-up" onClick={() => this.changeVotes(Articlecomments._id, 'up')}> </i>
                   <p> Votes: {Articlecomments.votes} </p>
                   <i class="fa fa-arrow-circle-down" onClick={() => this.changeVotes(Articlecomments._id, 'down')}> </i>
+                  <p> Created_by:<NavLink to={`/users/${Articlecomments.created_by}`} > {Articlecomments.created_by} </NavLink></p>
                   <p ><button onClick={this.deleteComment.bind(null, Articlecomments._id, Articlecomments.created_by)}>Delete</button></p>
                 </p>
               </p>
