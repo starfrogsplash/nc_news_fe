@@ -4,7 +4,7 @@
 ### About
 
 A Northcoders News website, built using React, which is also
-Deployed on Heroku https://fe-nc-news.herokuapp.com/
+deployed on Heroku https://fe-nc-news.herokuapp.com/
 
 ### Installation
 
