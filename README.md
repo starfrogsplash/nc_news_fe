@@ -3,10 +3,9 @@
 
 ### About
 
-A Northcoders News website, built using React
+A Northcoders News website, built using React, which is also
+Deployed on Heroku https://fe-nc-news.herokuapp.com/
 
-
----------
 ### Installation
 
 Before running this project, you need to make sure you have these dependencies installed, the links are provided for you.
